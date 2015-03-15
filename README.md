@@ -1,2 +1,2 @@
 # sfGrid
-Simple grid system that uses floats, with no left of right margins.
+Strightforward grid system that uses floats, with no left of right margins.
