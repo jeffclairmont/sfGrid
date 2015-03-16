@@ -1,6 +1,5 @@
 $cols: 8; // Number of columns to generate
 $margin: 1.6%; // Margin between columns in sfgrid-margin
-$breakpoint: 480px; // Mobile breakpoint, columns will go 100%
 
 .sfgrid {
     @for $i from 1 through $cols {
@@ -36,8 +35,8 @@ $breakpoint: 480px; // Mobile breakpoint, columns will go 100%
     &.debug {
         margin: 16px 0;
         > * {
-            background: rgb(22, 86, 203);
-            color: rgb(195, 195, 195);
+            background: #497789;
+            color: #060D31;
             padding: 16px;
         }
     }
@@ -66,20 +65,23 @@ $breakpoint: 480px; // Mobile breakpoint, columns will go 100%
     }
 }
 
-@media (max-width: $breakpoint)  {
-    .sfgrid, .sfgrid-margin {
-        height: auto;
-        img {
-            display: block;
-            margin: 0 auto;
+@mixin sfgrid-min($point, $full: true) {
+    @media (max-width: $point) {
+        @if $full == true {
+            height: auto;
+            img {
+                display: block;
+                margin: 0 auto;
+            }
+            > *[class*="col-"] {
+                width: 100%;
+                float: none;
+                margin: 0;
+            }
         }
-        > *[class*="col-"] {
-            width: 100%;
-            float: none;
-            margin: 0;
-            margin-bottom: 16px;
-        }
+        @content;
     }
 }
+
 
 
